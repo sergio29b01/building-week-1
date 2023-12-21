@@ -1,0 +1,18 @@
+import socket 
+
+indirizzo_IP = input('Entrare indirizzo IP da scanzionare: ') 
+intervallo_P = input('Enter the port range to scan (es 25-250): ') 
+
+firts_port = int(intervallo_P.split('-')[0]) 
+last_port = int(intervallo_P.split('-')[1]) 
+
+print('Scazione del host', indirizzo_IP, 'da',first_port, 'a', last_port) 
+
+for port in range(first_port, last_port): 
+	  creato = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+	  stato = creato.connect_ex(indirizzo_IP, port)
+	  if(stato == 0):
+	  	print('*** Port',port,'- OPEN ***') 
+	  else:
+		 print('Port',port,'- CLOSED') 
+	s.close()
